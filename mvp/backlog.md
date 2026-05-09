@@ -15,3 +15,4 @@ Cada linha: o que é, por que adiado, em qual versão entra.
 | B008 | Apps mobile nativas (iOS/Android) | MVP é web; mobile é v1.0+ | v1.0 |
 | B009 | Internacionalização (EN, ES) | MVP só PT-BR | v2.0 |
 | B010 | Programa para profissionais de saúde | Requer fluxo B2B2C diferente | v3.0 |
+| B011 | Modelo local de visão para OCR de exames (**Qwen2.5-VL candidato preferencial**) | MVP usa Tesseract.js (OCR) + Claude API (análise); modelo local entra quando demo for em ambiente controlado e 1.2GB de download for aceitável. Candidatos por tier: **2B** para browser/mobile premium, **7B** para desktop via Ollama/MLX. Supera Gemma 3 em PT-BR e tem licença Apache 2.0. | v1.0 |
