@@ -102,7 +102,6 @@ export interface ExamRecord {
   uploadedAt: number
   type: ExamType
   fileName: string
-  fileBlob: Blob
   status: ExamStatus
   extractedData?: ExtractedExamData
   analysis?: string
