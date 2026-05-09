@@ -23,6 +23,55 @@ export type ExamType = 'laboratorial' | 'imagem' | 'polissonografia' | 'outro'
 export type ExamStatus = 'pendente' | 'processado' | 'erro'
 export type ReportFormat = 'docx' | 'pdf'
 
+// ─── Tipos estruturados de dados extraídos de exames (D001) ──────────────────
+
+export interface LabResult {
+  name: string
+  value: string
+  unit: string
+  referenceRange?: string
+  flag?: 'alto' | 'baixo' | 'normal'
+}
+
+export interface ExtractedLabData {
+  type: 'laboratorial'
+  examDate?: string
+  laboratoryName?: string
+  requestingDoctor?: string
+  results: LabResult[]
+  observations?: string
+}
+
+export interface ExtractedImageData {
+  type: 'imagem'
+  examDate?: string
+  modality?: 'RX' | 'TC' | 'RM' | 'US' | 'PET' | 'outro'
+  bodyRegion?: string
+  radiologist?: string
+  findings: string
+  conclusion?: string
+}
+
+export interface ExtractedPolysomnographyData {
+  type: 'polissonografia'
+  examDate?: string
+  iah?: number
+  sleepEfficiency?: number
+  remPercentage?: number
+  findings: string
+}
+
+export interface ExtractedOtherData {
+  type: 'outro'
+  rawText?: string
+}
+
+export type ExtractedExamData =
+  | ExtractedLabData
+  | ExtractedImageData
+  | ExtractedPolysomnographyData
+  | ExtractedOtherData
+
 export interface ScaleResult {
   id: string
   sessionId: string
@@ -55,8 +104,7 @@ export interface ExamRecord {
   fileName: string
   fileBlob: Blob
   status: ExamStatus
-  // DÍVIDA[mvp]: extractedData é any — tipar melhor quando o parser de exames estiver definido
-  extractedData?: Record<string, unknown>
+  extractedData?: ExtractedExamData
   analysis?: string
 }
 

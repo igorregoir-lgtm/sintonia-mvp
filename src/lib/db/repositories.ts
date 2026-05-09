@@ -32,10 +32,10 @@ export const sessions = {
     return (await getDb()).get('sessions', sessionId)
   },
 
-  async list(status?: SessionStatus): Promise<ClinicalSession[]> {
+  async list(status?: SessionStatus, limit?: number): Promise<ClinicalSession[]> {
     const db = await getDb()
-    if (status) return db.getAllFromIndex('sessions', 'by-status', status)
-    return db.getAll('sessions')
+    if (status) return db.getAllFromIndex('sessions', 'by-status', status, limit)
+    return db.getAll('sessions', undefined, limit)
   },
 
   async update(sessionId: string, patch: Partial<Omit<ClinicalSession, 'id' | 'createdAt'>>): Promise<ClinicalSession> {
@@ -62,12 +62,12 @@ export const scales = {
     return record
   },
 
-  async listBySession(sessionId: string): Promise<ScaleResult[]> {
-    return (await getDb()).getAllFromIndex('scales', 'by-sessionId', sessionId)
+  async listBySession(sessionId: string, limit?: number): Promise<ScaleResult[]> {
+    return (await getDb()).getAllFromIndex('scales', 'by-sessionId', sessionId, limit)
   },
 
-  async listByType(scaleType: ScaleType): Promise<ScaleResult[]> {
-    return (await getDb()).getAllFromIndex('scales', 'by-scaleType', scaleType)
+  async listByType(scaleType: ScaleType, limit?: number): Promise<ScaleResult[]> {
+    return (await getDb()).getAllFromIndex('scales', 'by-scaleType', scaleType, limit)
   },
 }
 
@@ -81,8 +81,8 @@ export const medications = {
     return record
   },
 
-  async listBySession(sessionId: string): Promise<Medication[]> {
-    return (await getDb()).getAllFromIndex('medications', 'by-sessionId', sessionId)
+  async listBySession(sessionId: string, limit?: number): Promise<Medication[]> {
+    return (await getDb()).getAllFromIndex('medications', 'by-sessionId', sessionId, limit)
   },
 
   async update(medicationId: string, patch: Partial<Omit<Medication, 'id' | 'createdAt'>>): Promise<Medication> {
@@ -109,8 +109,8 @@ export const exams = {
     return (await getDb()).get('exams', examId)
   },
 
-  async listBySession(sessionId: string): Promise<ExamRecord[]> {
-    return (await getDb()).getAllFromIndex('exams', 'by-sessionId', sessionId)
+  async listBySession(sessionId: string, limit?: number): Promise<ExamRecord[]> {
+    return (await getDb()).getAllFromIndex('exams', 'by-sessionId', sessionId, limit)
   },
 
   async updateStatus(
@@ -138,10 +138,9 @@ export const tracker = {
     return record
   },
 
-  async listByRange(fromDate: number, toDate: number): Promise<TrackerEntry[]> {
+  async listByRange(fromDate: number, toDate: number, limit?: number): Promise<TrackerEntry[]> {
     const db = await getDb()
-    const all = await db.getAllFromIndex('tracker', 'by-date', IDBKeyRange.bound(fromDate, toDate))
-    return all
+    return db.getAllFromIndex('tracker', 'by-date', IDBKeyRange.bound(fromDate, toDate), limit)
   },
 
   async getByDate(date: number): Promise<TrackerEntry | undefined> {
@@ -161,8 +160,8 @@ export const reports = {
     return record
   },
 
-  async listBySession(sessionId: string): Promise<Report[]> {
-    return (await getDb()).getAllFromIndex('reports', 'by-sessionId', sessionId)
+  async listBySession(sessionId: string, limit?: number): Promise<Report[]> {
+    return (await getDb()).getAllFromIndex('reports', 'by-sessionId', sessionId, limit)
   },
 
   async get(reportId: string): Promise<Report | undefined> {
