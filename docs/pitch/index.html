@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sintonia — Pitches</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --fg: #f4f1ea;
+      --muted: #a8b0b8;
+      --accent: #3d8b7a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(ellipse at top, #1a242e 0%, var(--bg) 55%);
+      color: var(--fg);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+    main { max-width: 36rem; width: 100%; }
+    h1 { font-size: 1.75rem; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+    p { color: var(--muted); line-height: 1.5; margin: 0 0 1.75rem; }
+    ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+    a {
+      display: block;
+      padding: 1rem 1.15rem;
+      border: 1px solid #2a3540;
+      border-radius: 0.75rem;
+      color: var(--fg);
+      text-decoration: none;
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    a:hover { border-color: var(--accent); background: rgba(61,139,122,0.12); }
+    a strong { display: block; margin-bottom: 0.25rem; }
+    a span { color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Sintonia — Pitches</h1>
+    <p>Decks migrados para o repositório canônico. Escolha qual abrir:</p>
+    <ul>
+      <li>
+        <a href="./produto/">
+          <strong>Pitch de produto</strong>
+          <span>Problema clínico, privacy-by-design, módulos e roadmap</span>
+        </a>
+      </li>
+      <li>
+        <a href="./tese-mercado/">
+          <strong>Tese de mercado</strong>
+          <span>Ângulo premium, longevidade e posicionamento B2C / B2B2C</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>

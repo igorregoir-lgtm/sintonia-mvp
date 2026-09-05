@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sintonia">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Sintonia — Pitch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f8fafc;--text:#082f33;--muted:#5d7b80;--accent:#0f766e;--card:rgba(255,255,255,.88)}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;-webkit-text-size-adjust:100%}
+    body{overflow-x:hidden} h1,h2,h3{font-family:'DM Serif Display',serif;line-height:.95;margin:0}
+    h1{font-size:clamp(2.2rem,12vw,4.2rem)} h2{font-size:clamp(1.4rem,8vw,2.3rem)} p,li{font-size:clamp(.98rem,4.2vw,1.06rem);line-height:1.55}
+    .wrap{max-width:980px;margin:0 auto;padding:16px 14px 120px} .hero{padding-top:10px}
+    .card{background:var(--card);backdrop-filter:blur(12px);border:1px solid rgba(8,47,51,.08);border-radius:22px;box-shadow:0 12px 30px rgba(8,47,51,.06);padding:18px}
+    .pill{display:inline-flex;align-items:center;padding:.5rem .8rem;border-radius:999px;background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.14);font-size:.85rem}
+    .grid{display:grid;gap:12px} .g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .mini{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.74);border:1px solid rgba(8,47,51,.06)}
+    .section{margin-top:14px;padding-top:14px;border-top:1px solid rgba(8,47,51,.08)}
+    .muted{color:var(--muted)} .center{text-align:center}
+    .nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:min(calc(100vw - 14px),620px);display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.92);border:1px solid rgba(8,47,51,.08);backdrop-filter:blur(12px);z-index:50}
+    .btn{width:42px;height:42px;border:none;border-radius:50%;background:rgba(15,118,110,.08);color:var(--accent);font-size:1.1rem}
+    .dots{display:flex;gap:6px;align-items:center;justify-content:center;flex:1} .dot{width:8px;height:8px;border-radius:999px;background:rgba(8,47,51,.16)} .dot.active{background:var(--accent);transform:scale(1.2)}
+    .counter{font-size:.8rem;color:var(--muted);min-width:52px;text-align:center}
+    .slide{display:none;min-height:calc(100svh - 32px)} .slide.active{display:block}
+    .stack{display:grid;gap:12px}
+    .topbar{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0 12px;background:linear-gradient(180deg,var(--bg),rgba(248,250,252,.9),transparent)}
+    .action{border:none;border-radius:999px;padding:10px 14px;background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.14);color:var(--text);font-size:.84rem}
+    .ghost{background:rgba(255,255,255,.8)}
+    .install-banner{display:none;margin-top:10px}
+    .install-banner.show{display:block}
+    @media (max-width: 760px){.g2,.g3{grid-template-columns:1fr}.wrap{padding:12px 10px 104px}.nav{width:calc(100vw - 10px);bottom:6px;padding:8px 10px}.counter{display:none}.btn{width:38px;height:38px}.card{padding:15px;border-radius:18px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="pill">Sintonia — pitch mobile hospedável</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+        <button class="action" id="installBtn" style="display:none">Adicionar à Tela Inicial</button>
+        <button class="action ghost" onclick="openFullscreen()">Abrir em tela cheia</button>
+      </div>
+    </div>
+
+    <div id="installBanner" class="install-banner card">
+      <strong>Para melhor experiência:</strong> no iPhone, toque em compartilhar e escolha <em>Adicionar à Tela Inicial</em>. No Android, toque em instalar quando aparecer.
+    </div>
+
+    <section class="slide active" data-slide="1"><div class="card hero center stack"><div style="font-size:56px">🏥</div><div class="pill" style="margin:0 auto">Health AI • Privacy by design • Mobile first</div><h1>Sintonia</h1><p class="muted">O app que organiza a história de saúde antes da consulta e ajuda o paciente a chegar com mais clareza, contexto e precisão.</p><div class="grid g2"><div class="mini">Entrevista estruturada</div><div class="mini">Escalas validadas</div><div class="mini">Exames analisados localmente</div><div class="mini">Relatório compartilhável</div></div></div></section>
+    <section class="slide" data-slide="2"><div class="card stack"><div class="pill">Problema</div><h2>A consulta começa tarde demais</h2><div class="grid"><div class="mini">🧠 Histórico, sintomas e medicamentos chegam dispersos.</div><div class="mini">⏱️ O tempo clínico é gasto reconstruindo contexto básico.</div><div class="mini">🔒 Dado sensível não deveria depender da nuvem para gerar valor.</div></div></div></section>
+    <section class="slide" data-slide="3"><div class="card stack"><div class="pill">Solução</div><h2>O app prepara o caso clínico antes do médico ver o paciente</h2><div class="grid"><div class="mini">• Entrevista empática e estruturada</div><div class="mini">• Aplicação de escalas clínicas</div><div class="mini">• Upload e análise local de exames</div><div class="mini">• Relatório com perguntas úteis para a consulta</div></div></div></section>
+    <section class="slide" data-slide="4"><div class="card stack"><div class="pill">Princípio central</div><h2>Dados clínicos detalhados nunca saem do dispositivo</h2><div class="grid"><div class="mini">Fica local: transcrições, exames, histórico farmacológico, tracker detalhado e relatórios.</div><div class="mini">Pode ir à nuvem: apenas metadados mínimos para conta, sync e UX.</div><div class="mini"><strong>Privacidade não é opção do usuário. É regra do produto.</strong></div></div></div></section>
+    <section class="slide" data-slide="5"><div class="card stack"><div class="pill">Motor do produto</div><h2>7 módulos transformam informação caótica em preparo clínico</h2><div class="grid"><div class="mini"><strong>1.</strong> Entrevista estruturada</div><div class="mini"><strong>2.</strong> Tracker longitudinal</div><div class="mini"><strong>3.</strong> Ingestão e análise de exames</div><div class="mini"><strong>4.</strong> Roteamento LLM governado pelo admin</div><div class="mini"><strong>5.</strong> Armazenamento híbrido</div><div class="mini"><strong>6.</strong> Insights por ML com privacidade</div><div class="mini"><strong>7.</strong> Preparação e compartilhamento clínico</div></div></div></section>
+    <section class="slide" data-slide="6"><div class="card stack"><div class="pill">Arquitetura</div><h2>Cloud e local têm papéis diferentes</h2><div class="grid"><div class="mini"><strong>Cloud:</strong> narrativa geral, acolhimento e contexto sem dado clínico detalhado.</div><div class="mini"><strong>Local:</strong> escalas, histórico sensível, parsing de exames, hipóteses diagnósticas e relatório final.</div><div class="mini"><strong>Admin:</strong> escolhe modelos, prompts, custos, fallback e tiers de dispositivo.</div></div></div></section>
+    <section class="slide" data-slide="7"><div class="card stack"><div class="pill">Biblioteca clínica</div><h2>Começa com rastreios curtos e acionáveis</h2><div class="grid"><div class="mini">MVP: PHQ-2/9, GAD-2/7, PHQ-4, AUDIT-C, STOP-Bang, Epworth, Mini-Cog, PEG, FINDRISC.</div><div class="mini">v1: TAPS, DAST, ACT, CAT, IPSS, EPDS, Katz, Lawton, EQ-5D e risco social.</div><div class="mini">v2+: escalas especializadas por especialidade e faixa etária.</div></div></div></section>
+    <section class="slide" data-slide="8"><div class="card stack"><div class="pill">Roadmap</div><h2>Entrega progressiva sem quebrar a promessa</h2><div class="grid"><div class="mini"><strong>MVP:</strong> entrevista, tracker básico, PDFs, roteamento fixo, sem sync.</div><div class="mini"><strong>v1.0:</strong> DICOM, integrações, backup E2E, ML local, app web e painel admin.</div><div class="mini"><strong>v2.0+:</strong> sync P2P, ML federado opt-in, FHIR, programa profissional, B2B2C.</div></div></div></section>
+    <section class="slide" data-slide="9"><div class="card stack"><div class="pill">Métricas</div><h2>O produto precisa provar valor em três frentes</h2><div class="grid"><div class="mini">Usuário: melhor consulta, menos ansiedade, retenção e melhora de escala.</div><div class="mini">Operação: custo cloud, latência local, fallback e qualidade por configuração.</div><div class="mini">Negócio: churn abaixo de 5%, avaliação acima de 4.5 e uptime de 99.9% nas partes cloud.</div></div></div></section>
+    <section class="slide" data-slide="10"><div class="card stack"><div class="pill">Riscos e mitigação</div><h2>A tese é forte porque os trade-offs são explícitos</h2><div class="grid"><div class="mini">Riscos: dependência do admin, hardware heterogêneo, latência local e ausência de sync no MVP.</div><div class="mini">Mitigações: A/B tests, rollback, degradação graciosa, UX clara e roadmap de backup/sync.</div></div></div></section>
+    <section class="slide" data-slide="11"><div class="card center hero stack"><div style="font-size:56px">🩺</div><div class="pill" style="margin:0 auto">Fechamento</div><h1>Confiança em saúde digital começa com arquitetura.</h1><p class="muted">Seus dados clínicos ficam com você. O app organiza, prepara e melhora a conversa com o médico.</p></div></section>
+  </div>
+
+  <div class="nav">
+    <button class="btn" onclick="prev()">‹</button>
+    <div class="dots" id="dots"></div>
+    <div class="counter" id="counter">1 / 11</div>
+    <button class="btn" onclick="next()">›</button>
+  </div>
+
+  <script>
+    const slides=[...document.querySelectorAll('.slide')];
+    const dots=document.getElementById('dots');
+    const counter=document.getElementById('counter');
+    const installBtn=document.getElementById('installBtn');
+    const installBanner=document.getElementById('installBanner');
+    let current=1,deferred=null;
+    slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>go(i+1);dots.appendChild(d)});
+    function sync(){[...dots.children].forEach((d,i)=>d.classList.toggle('active',i+1===current));counter.textContent=`${current} / ${slides.length}`}
+    function go(n){slides[current-1].classList.remove('active');current=((n-1+slides.length)%slides.length)+1;slides[current-1].classList.add('active');slides[current-1].scrollTop=0;sync()}
+    function prev(){go(current-1)} function next(){go(current+1)}
+    function openFullscreen(){const el=document.documentElement; (el.requestFullscreen&&el.requestFullscreen().catch(()=>{}))||(el.webkitRequestFullscreen&&el.webkitRequestFullscreen());}
+    window.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next(); if(e.key==='ArrowLeft')prev()})
+    let startX=0;document.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{const dx=startX-e.changedTouches[0].clientX;if(Math.abs(dx)>40)dx>0?next():prev()},{passive:true});
+    window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;installBtn.style.display='inline-flex';installBanner.classList.add('show')});
+    installBtn.addEventListener('click',async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice.catch(()=>{});deferred=null;installBtn.style.display='none';installBanner.classList.remove('show')});
+    if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    window.addEventListener('load',()=>{history.replaceState(null,'','./');});
+  </script>
+</body>
+</html>

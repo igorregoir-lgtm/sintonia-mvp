@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sintonia">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Sintonia — Premium + Tese</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f5faf8;--text:#102b2e;--muted:#5e7679;--accent:#0f766e;--gold:#8a6a2f;--card:rgba(255,255,255,.9)}
+    *{box-sizing:border-box} html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif}
+    body{overflow-x:hidden;-webkit-text-size-adjust:100%} h1,h2,h3{font-family:'DM Serif Display',serif;line-height:.95;margin:0} h1{font-size:clamp(2.2rem,12vw,4.4rem)} h2{font-size:clamp(1.55rem,8vw,2.5rem)} p,li{font-size:clamp(1rem,4.1vw,1.08rem);line-height:1.68}
+    .wrap{max-width:1040px;margin:0 auto;padding:14px 12px 110px}.hero{display:grid;place-items:center;min-height:calc(100svh - 24px);text-align:center;background:radial-gradient(circle at top right, rgba(138,106,47,.10), transparent 28%), radial-gradient(circle at bottom left, rgba(52,211,153,.10), transparent 24%), var(--bg)}
+    .slide{display:none;min-height:calc(100svh - 24px)} .slide.active{display:block}
+    .card{background:var(--card);backdrop-filter:blur(12px);border:1px solid rgba(16,43,46,.08);border-radius:24px;box-shadow:0 12px 30px rgba(16,43,46,.06);padding:18px}
+    .stack{display:grid;gap:12px} .grid{display:grid;gap:12px} .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .pill{display:inline-flex;align-items:center;padding:.46rem .8rem;border-radius:999px;background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.14);font-size:.85rem}
+    .mini{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.72);border:1px solid rgba(16,43,46,.06)}
+    .muted{color:var(--muted)}
+    .nav{position:fixed;left:50%;bottom:8px;transform:translateX(-50%);width:min(calc(100vw - 12px),620px);display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid rgba(16,43,46,.08);backdrop-filter:blur(12px);z-index:50}
+    .btn{width:42px;height:42px;border:none;border-radius:50%;background:rgba(15,118,110,.08);color:var(--accent);font-size:1.1rem}
+    .dots{display:flex;gap:6px;align-items:center;justify-content:center;flex:1} .dot{width:8px;height:8px;border-radius:50%;background:rgba(16,43,46,.16)} .dot.active{background:var(--accent)} .counter{font-size:.8rem;color:var(--muted);min-width:52px;text-align:center}
+    .top{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;padding:8px 0 12px;position:sticky;top:0;background:linear-gradient(180deg,var(--bg),rgba(245,250,248,.85),transparent);z-index:20}
+    .action{border:none;border-radius:999px;padding:9px 13px;background:rgba(15,118,110,.08);border:1px solid rgba(15,118,110,.14);font-size:.84rem}
+    @media (max-width:760px){.g2{grid-template-columns:1fr}.wrap{padding:10px 10px 100px}.nav{width:calc(100vw - 10px);bottom:6px;padding:8px 10px}.counter{display:none}.btn{width:38px;height:38px}.card{padding:15px;border-radius:18px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top"><div class="pill">Sintonia • premium + tese de mercado</div></div>
+
+    <section class="slide active hero" data-slide="1"><div class="card stack" style="max-width:860px"><div style="font-size:58px">✨</div><div class="pill" style="margin:0 auto">Saúde integrada • Longevidade • Sofisticação humana</div><h1>Sintonia é um movimento de cuidado para viver melhor por mais tempo.</h1><p class="muted">Uma experiência elegante que ajuda a pessoa a enxergar a própria saúde como um todo, com contexto, discrição e profundidade.</p></div></section>
+    <section class="slide" data-slide="2"><div class="card stack"><div class="pill">Para quem</div><h2>Pessoas 40+ que querem longevidade com qualidade</h2><div class="grid"><div class="mini">Quem já tem exames, apps e especialistas espalhados.</div><div class="mini">Quem quer fazer da saúde uma construção contínua.</div><div class="mini">Quem quer bem-estar com substância, não só aparência.</div></div></div></section>
+    <section class="slide" data-slide="3"><div class="card stack"><div class="pill">O problema de mercado</div><h2>A pessoa é vista em pedaços</h2><div class="grid"><div class="mini">Um app guarda exames.</div><div class="mini">Outro guarda passos e sono.</div><div class="mini">O especialista enxerga só a sua fatia.</div><div class="mini">A pessoa continua sem uma leitura unificada de si mesma.</div></div></div></section>
+    <section class="slide" data-slide="4"><div class="card stack"><div class="pill">O que muda</div><h2>Sintonia conecta tudo em uma narrativa de saúde viva</h2><div class="grid"><div class="mini">Exames, sintomas, hábitos, medicamentos e suplementos.</div><div class="mini">Padrões que ajudam a entender o que está por trás do que a pessoa sente.</div><div class="mini">Um retrato contínuo para decisões melhores no dia a dia e na consulta.</div></div></div></section>
+    <section class="slide" data-slide="5"><div class="card stack"><div class="pill">Experiência</div><h2>Informação sensível pode ser coletada com leveza e elegância</h2><div class="grid"><div class="mini">Interações lúdicas e menos intrusivas do que questionários frios.</div><div class="mini">Pequenos jogos e experiências guiadas para entender rotina, humor e hábitos.</div><div class="mini">Mais engajamento, menos atrito, mais adesão.</div></div></div></section>
+    <section class="slide" data-slide="6"><div class="card stack"><div class="pill">Valor para a pessoa</div><h2>Mais bem-estar nasce de pequenas mudanças bem guiadas</h2><div class="grid"><div class="mini">Perceber cedo o que drena energia, sono e vitalidade.</div><div class="mini">Conectar hábitos e sintomas a sinais objetivos do corpo.</div><div class="mini">Saber por onde começar quando a saúde pede atenção.</div></div></div></section>
+    <section class="slide" data-slide="7"><div class="card stack"><div class="pill">Na prática</div><h2>O Sintonia entrega uma visão que o médico consegue usar</h2><div class="grid"><div class="mini">Resumo claro do que merece atenção.</div><div class="mini">Integração entre especialidades em vez de visão isolada.</div><div class="mini">Junta multidisciplinar quando fizer sentido.</div></div></div></section>
+    <section class="slide" data-slide="8"><div class="card stack"><div class="pill">Tese de produto</div><h2>Saúde integrada cria retenção porque gera utilidade contínua</h2><div class="grid"><div class="mini">A cada novo exame, hábito ou sintoma, a leitura fica mais rica.</div><div class="mini">A pessoa volta porque encontra valor de forma recorrente.</div><div class="mini">O app vira uma camada de inteligência sobre a vida real.</div></div></div></section>
+    <section class="slide" data-slide="9"><div class="card stack"><div class="pill">Confiança</div><h2>Privacidade não é detalhe: é parte da proposta de valor</h2><div class="grid"><div class="mini">Dados clínicos sensíveis ficam no dispositivo.</div><div class="mini">O usuário se sente seguro para usar mais e compartilhar melhor.</div><div class="mini">A confiança vira vantagem competitiva.</div></div></div></section>
+    <section class="slide" data-slide="10"><div class="card stack"><div class="pill">Tese de mercado</div><h2>O Sintonia pode virar a interface de saúde da pessoa ao longo da vida</h2><div class="grid"><div class="mini">B2C para organizar o uso individual.</div><div class="mini">B2B2C para clínicas, operadoras e programas de longevidade.</div><div class="mini">Expansão com mais dados, mais recorrência e mais utilidade.</div></div></div></section>
+    <section class="slide" data-slide="11"><div class="card stack"><div class="pill">Promessa final</div><h2>Uma experiência premium de saúde, com inteligência, discrição e escala</h2><div class="grid"><div class="mini">Longevidade com contexto.</div><div class="mini">Bem-estar com substância.</div><div class="mini">Saúde integrada com uma linguagem humana e sofisticada.</div></div></div></section>
+  </div>
+
+  <div class="nav"><button class="btn" onclick="move(-1)">‹</button><div class="dots" id="dots"></div><div class="counter" id="counter">1 / 11</div><button class="btn" onclick="move(1)">›</button></div>
+
+  <script>
+    const slides=[...document.querySelectorAll('.slide')], dots=document.getElementById('dots'), counter=document.getElementById('counter'); let current=1;
+    slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>go(i+1);dots.appendChild(d)});
+    function sync(){[...dots.children].forEach((d,i)=>d.classList.toggle('active',i+1===current));counter.textContent=`${current} / ${slides.length}`}
+    function go(n){slides[current-1].classList.remove('active');current=((n-1+slides.length)%slides.length)+1;slides[current-1].classList.add('active');slides[current-1].scrollTop=0;sync()}
+    function move(dir){go(current+dir)}
+    document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')move(1);if(e.key==='ArrowLeft')move(-1)}); let startX=0;document.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{const dx=startX-e.changedTouches[0].clientX;if(Math.abs(dx)>40)move(dx>0?1:-1)},{passive:true}); sync();
+  </script>
+</body></html>
